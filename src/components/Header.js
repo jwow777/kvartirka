@@ -5,10 +5,10 @@ export default function Header() {
       <p className="header__subtitle">Сервис мониторинга и уничтожения астероидов, опасно подлетающих к Земле.</p>
       <ul className="header__lists">
         <li>
-          <a href="/" className="header__link header__link_active">Астероиды</a>
+          <a href="/" className="link link_active">Астероиды</a>
         </li>
         <li>
-          <a href="/" className="header__link">Уничтожение</a>
+          <a href="/" className="link">Уничтожение</a>
         </li>
       </ul>
     </header>
