@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
 import comet from "../images/comet.svg";
+import dino from "../images/dino.svg";
 
-export default function Card({item, toTheMoon, checkboxValue}) {
+export default function Card({item, toTheMoon, checkboxValue, destruction, setDestruction}) {
   function conventerDate(date) {
     const result = date.split('-').reverse();
     if (result[1] === '01') {
@@ -31,10 +33,27 @@ export default function Card({item, toTheMoon, checkboxValue}) {
     return result.join(' ');
   }
 
+  function addComet(e) {
+    isActiveButton(e)
+    return setDestruction([...destruction, item])
+  }
+
+  function isActiveButton(e) {
+    destruction.some(card => card.id === item.id)
+    e.target.classList.add('card__button_add');
+    return e.target.disabled = true;
+  }
+
+  const styles = {
+    transform: `scale(${Math.round(item.close_approach_data[0].miss_distance.kilometers)/20000000})`,
+    top: `-${Math.round(item.close_approach_data[0].miss_distance.kilometers)/2000000}px`
+  }
+
   return (
     <li className={`card${checkboxValue & !item.is_potentially_hazardous_asteroid ? ' card_unvisible' : ''}${item.is_potentially_hazardous_asteroid ? ' card_red' : ' card_green'}`}>
-      <img src={comet} className="card__comet" alt="Cometa"/>
-      <h2 className="card__title">{item.name.slice(1,-1)}</h2>
+      <img src={comet} style={styles} className="card__comet" alt="Cometa"/>
+      <img src={dino} className="card__dino" alt="dino"/>
+      <Link to={`/asteroid/${item.id}`} className="card__title">{item.name.slice(1,-1)}</Link>
       <ul className="card__lists">
         <li className="card__list">
           <p className="card__text">Дата</p>
@@ -52,7 +71,7 @@ export default function Card({item, toTheMoon, checkboxValue}) {
       <div className="card__result">
         <p className="card__text">Оценка:</p>
         <p className="card__text card__text_bold">{item.is_potentially_hazardous_asteroid ? 'опасен' : 'не опасен'}</p>
-        <button type="button" className="card__button">На уничтожение</button>
+        <button type="button" className="card__button" onClick={addComet}>На уничтожение</button>
       </div>
     </li>
   );

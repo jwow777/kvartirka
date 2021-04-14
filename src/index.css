@@ -52,6 +52,11 @@
   text-decoration: none;
 }
 
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
 .content__filter {
   display: flex;
   justify-content: space-between;
@@ -102,12 +107,16 @@
   position: relative;
 }
 
+.card-full {
+  height: auto;
+}
+
 .card_green {
-  background: url(./images/dino.svg) no-repeat bottom left 16px, linear-gradient(90deg, #CFF37D 0%, #7DE88C 100%);
+  background: linear-gradient(90deg, #CFF37D 0%, #7DE88C 100%);
 }
 
 .card_red {
-  background: url(./images/dino.svg) no-repeat bottom left 16px, linear-gradient(90deg, #FFB199 0%, #FF0844 100%);
+  background: linear-gradient(90deg, #FFB199 0%, #FF0844 100%);
 }
 
 .card_unvisible {
@@ -122,6 +131,12 @@
   left: 140px;
 }
 
+.card__dino {
+  position: absolute;
+  bottom: 0;
+  left: 16px;
+}
+
 .card__title {
   grid-column: 2;
   font-weight: bold;
@@ -129,11 +144,28 @@
   line-height: 32px;
   text-decoration-line: underline;
   margin: 0;
+  color: #000;
+  z-index: 1;
 }
 
 .card__lists {
   grid-column: 2;
   grid-row: 2;
+  display: grid;
+  grid-row-gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.card-full__title {
+  grid-column: 2;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.card-full__lists {
+  grid-column: 2;
   display: grid;
   grid-row-gap: 8px;
   list-style: none;
@@ -178,8 +210,28 @@
   cursor: pointer;
 }
 
+.card__button_add {
+  background-color: #fff;
+  border: 1px solid rgba(0,0,0,0.2);
+  color: rgba(0,0,0,0.2);
+}
+
 .card__button:hover {
   background: #327ad3;
+}
+
+.destruction__button {
+  align-self: center;
+  width: 200px;
+  height: 48px;
+  background: #186DD6;
+  border: none;
+  outline: none;
+  border-radius: 24px;
+  font-size: 16px;
+  line-height: 20px;
+  color: #fff;
+  cursor: pointer;
 }
 
 .footer {
@@ -234,8 +286,37 @@
     padding: 105px 16px 24px;
   }
 
+  .card_green {
+    background: linear-gradient(rgba(255,255,255,0) 146px, rgba(255,255,255,1) 147px), linear-gradient(90deg, #CFF37D 0%, #7DE88C 100%);
+  }
+  
+  .card_red {
+    background: linear-gradient(rgba(255,255,255,0) 146px, rgba(255,255,255,1) 147px), linear-gradient(90deg, #FFB199 0%, #FF0844 100%);
+  }
+
+  .card-full {
+    height: auto;
+  }
+
+  .card-full__title {
+    grid-column: auto;
+  }
+  
+  .card-full__lists {
+    grid-column: auto;
+  }
+
   .card__comet {
     grid-row: auto;
+  }
+
+  .card__dino {
+    width: 35px;
+    height: 30px;
+    top: 115px;
+    left: auto;
+    right: 8px;
+    transform: rotateY(180deg);
   }
   
   .card__title {

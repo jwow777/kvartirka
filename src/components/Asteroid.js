@@ -1,6 +1,4 @@
-import { NavLink } from "react-router-dom"
-
-export default function Header() {
+export default function Asteroid() {
   return (
     <header className="header">
       <h1 className="header__title">Armaggedon V</h1>
