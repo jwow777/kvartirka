@@ -34,7 +34,6 @@ export default function CardFull({destruction, setDestruction}) {
       <img src={dino} className="card__dino" alt="dino"/>
       <h2 className="card__title">{item.designation}</h2>
       {item && item.close_approach_data.map((approach, index) => {
-        console.log(approach);
         return <Approach approach={approach} key={index}/>     
       })}
       <div className="card__result">

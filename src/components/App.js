@@ -22,7 +22,7 @@ export default function App() {
   }
 
   function api() {
-    return fetch('https://api.nasa.gov/neo/rest/v1/feed?start_date=2021-04-13&end_date=2021-04-20&api_key=DEMO_KEY')
+    return fetch('https://api.nasa.gov/neo/rest/v1/feed?start_date=2021-04-13&end_date=2021-04-30&api_key=DEMO_KEY')
     .then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
     .catch(err => console.log(err));
   }
